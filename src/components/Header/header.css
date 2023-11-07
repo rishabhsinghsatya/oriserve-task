@@ -8,7 +8,7 @@
 }
 .searchBar {
   display: flex;
-  gap: 14px;
+  /* gap: 14px; */
   justify-content: center;
 }
 .searchBar input {
@@ -16,11 +16,28 @@
   /* border-radius: 10px; */
   display: flex;
   height: 40px;
-  width: 250px;
+  width: 30rem;
+  font-size: 22px;
 }
 .btn {
   align-items: center;
   cursor: pointer;
   justify-content: center;
   width: 78px;
+}
+.image-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem;
+  background-color: white;
+  padding: 4rem;
+}
+.suggestionBox {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 563px;
+  background-color: white;
+  color: black;
 }

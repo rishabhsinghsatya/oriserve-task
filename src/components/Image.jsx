@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import "./Header/header.css";
 
 const API_KEY = process.env.REACT_APP_KEY;
 
@@ -37,7 +38,6 @@ const FlickrImages = (props) => {
   //   };
   return (
     <div>
-      <h1>{props.text}</h1>
       <InfiniteScroll
         dataLength={images.length}
         next={() => fetchImages(props.text, 1)}
