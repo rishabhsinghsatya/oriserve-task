@@ -1,0 +1,26 @@
+.header {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
+}
+.searchBar {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+.searchBar input {
+  background: #fff;
+  border-radius: 10px;
+  display: flex;
+  height: 40px;
+  width: 250px;
+}
+.btn {
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  width: 78px;
+}
