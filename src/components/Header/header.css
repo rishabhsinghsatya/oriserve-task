@@ -13,7 +13,7 @@
 }
 .searchBar input {
   background: #fff;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   display: flex;
   height: 40px;
   width: 250px;
