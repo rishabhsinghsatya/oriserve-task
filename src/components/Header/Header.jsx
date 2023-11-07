@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./header.css";
 import FlickrImages from "../Image";
+
 function Header() {
   const [text, setText] = useState("cat");
 
@@ -19,7 +20,7 @@ function Header() {
         />
         <button className="btn">Search</button>
       </div>
-      <FlickrImages text={text} />
+      <FlickrImages text={text} set />
     </div>
   );
 }

@@ -1,45 +1,58 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const API_KEY = process.env.REACT_APP_KEY;
 
 const FlickrImages = (props) => {
   const [images, setImages] = useState([]);
+  const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${API_KEY}&text=${props.text}&format=json&nojsoncallback=1`
-        );
+  const fetchImages = async (text, page) => {
+    try {
+      const response = await fetch(
+        `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${API_KEY}&text=${text}&page=${page}&format=json&nojsoncallback=1`
+      );
 
-        if (
-          response.data &&
-          response.data.photos &&
-          response.data.photos.photo
-        ) {
-          setImages(response.data.photos.photo);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.photos && data.photos.photo) {
+          setImages((prevImages) => [...prevImages, ...data.photos.photo]);
+          setPage(page + 1);
         }
-      } catch (error) {
-        console.error("Error fetching images:", error);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching images:", error);
+    }
+  };
+  useEffect(() => {
+    setImages([]);
+    setPage(1);
+    fetchImages(props.text, 1);
+  }, [props.text]);
 
-    fetchData();
-  }, []);
-
+  //   const fetchNextPage = async () => {
+  //     setImages((prevImages) => [...prevImages, ...data.photos.photo]);
+  //     setPage(page + 1);
+  //     await fetchImages(props.text, page);
+  //   };
   return (
     <div>
       <h1>{props.text}</h1>
-      <div className="image-container">
-        {images.map((image) => (
-          <img
-            key={image.id}
-            src={`https://farm${image.farm}.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`}
-            alt={image.title}
-          />
-        ))}
-      </div>
+      <InfiniteScroll
+        dataLength={images.length}
+        next={() => fetchImages(props.text, 1)}
+        hasMore={true}
+      >
+        <div className="image-container">
+          {images.map((image) => (
+            <img
+              key={image.id}
+              src={`https://farm${image.farm}.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`}
+              alt={image.title}
+            />
+          ))}
+        </div>
+      </InfiniteScroll>
     </div>
   );
 };
