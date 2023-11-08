@@ -41,6 +41,7 @@ const FlickrImages = (props) => {
         <div className="image-container">
           {images.map((image) => (
             <img
+              className="image"
               key={image.id}
               src={`https://farm${image.farm}.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`}
               alt={image.title}

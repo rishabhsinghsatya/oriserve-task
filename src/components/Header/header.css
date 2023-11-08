@@ -33,6 +33,10 @@
   background-color: white;
   padding: 4rem;
 }
+.image {
+  height: 13rem;
+}
+
 .suggestionBox {
   padding: 1rem;
   display: flex;
