@@ -5,15 +5,15 @@
   flex-direction: column;
   align-items: center;
   font-size: 1.5rem;
+  height: 12rem;
 }
 .searchBar {
   display: flex;
-  /* gap: 14px; */
   justify-content: center;
+  border: none;
 }
 .searchBar input {
   background: #fff;
-  /* border-radius: 10px; */
   display: flex;
   height: 40px;
   width: 30rem;
@@ -34,10 +34,42 @@
   padding: 4rem;
 }
 .suggestionBox {
+  padding: 1rem;
   display: flex;
-  flex-direction: column;
-  align-items: start;
-  width: 563px;
+  flex-direction: row;
+  align-items: self-end;
+  width: 535px;
   background-color: white;
   color: black;
+  z-index: 1;
+  justify-content: space-between;
+}
+.suggestion {
+  display: flex;
+  flex-direction: column;
+}
+.clearBtn {
+  height: 36px;
+  width: 65px;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  /* text-decoration: none; */
+  font-size: 22px;
+  background-color: red;
+}
+@media (max-width: 768px) {
+  .header {
+    font-size: 1.2rem;
+    height: auto;
+  }
+  .searchBar {
+    flex-direction: column;
+  }
+  .searchBar input {
+    width: 100%;
+  }
+  .btn {
+    margin-top: 1rem auto;
+  }
 }

@@ -31,11 +31,6 @@ const FlickrImages = (props) => {
     fetchImages(props.text, 1);
   }, [props.text]);
 
-  //   const fetchNextPage = async () => {
-  //     setImages((prevImages) => [...prevImages, ...data.photos.photo]);
-  //     setPage(page + 1);
-  //     await fetchImages(props.text, page);
-  //   };
   return (
     <div>
       <InfiniteScroll
